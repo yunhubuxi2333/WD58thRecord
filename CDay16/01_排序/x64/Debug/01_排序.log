@@ -1,0 +1,5 @@
+﻿  main.c
+E:\C++_Code\C++学习\CDay16\01_排序\main.c(82,37): warning C4554: “>>”: 检查运算符优先级是否存在的可能的错误；使用括号阐明优先级
+E:\C++_Code\C++学习\CDay16\01_排序\main.c(164,26): warning C4554: “>>”: 检查运算符优先级是否存在的可能的错误；使用括号阐明优先级
+E:\C++_Code\C++学习\CDay16\01_排序\main.c(187,8): warning C4244: “函数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+  01_排序.vcxproj -> E:\C++_Code\C++学习\CDay16\x64\Debug\01_排序.exe
