@@ -15,6 +15,9 @@
         .c_str()
 
 #define LogWarn(msg) Mylogger::getInstance()->warn(addPrefix(msg))
+#define LogError(msg) Mylogger::getInstance()->error(addPrefix(msg))
+#define LogInfo(msg) Mylogger::getInstance()->info(addPrefix(msg))
+#define LogDebug(msg) Mylogger::getInstance()->debug(addPrefix(msg))
 
 class Mylogger {
    public:

@@ -20,7 +20,8 @@ class CharArray {
 
     // CharArray * const this
     char& operator[](size_t idx) {  // size_t是无符号整数
-        if (idx < this->_capacity - 1) {
+        cout << "非const版本的operator[]" << endl;
+        if (idx < _capacity - 1) {
             return _data[idx];
         } else {
             cout << "out of range!" << endl;
@@ -36,7 +37,7 @@ class CharArray {
         cout << "const版本的operator[]" << endl;
         if (idx < this->_capacity - 1) {
             // 这两个操作被函数声明中第二个const限定了
-            _data[idx] = 'R';  // 只能人为避免这种修改，没有被限制
+            // _data[idx] = 'R';  // 只能人为避免这种修改，没有被限制
             return _data[idx];
         } else {
             cout << "out of range!" << endl;
@@ -53,12 +54,14 @@ class CharArray {
 void test0() {
     char arr[] = "hello";
     cout << arr[0] << endl;
+    arr[0] = 'Y';
 
     const char arr2[] = "world";
     cout << arr2[0] << endl;
     // arr2[0] = 'Y';  // const不可被修改
 
     CharArray ca("hello");
+
     cout << ca[0] << endl;  // 下标访问函数重载，必须成员函数形式重载
     ca[0] = 'X';
     cout << ca[0] << endl;
@@ -66,8 +69,8 @@ void test0() {
 
     const CharArray ca2(
         "world");  // 一个手上有点钱无二无女的老人，只敢用公安局认证的软件
-                   //    只敢调用const成员或者函数
-    // ca2[0] = const 'W';
+    // 只敢调用const成员或者函数
+    //  ca2[0] = const 'W';
     cout << ca2[0] << endl;
 }
 
