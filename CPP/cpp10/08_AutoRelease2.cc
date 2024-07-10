@@ -3,6 +3,19 @@ using std::cout;
 using std::endl;
 
 class Singleton {
+    class AutoRelease {
+       public:
+        AutoRelease() { cout << "AutoRelease()" << endl; }
+
+        ~AutoRelease() {
+            cout << "~AutoRelease()" << endl;
+            if (_pInstance) {
+                delete _pInstance;
+                _pInstance = nullptr;
+            }
+        }
+    };
+
    public:
     static Singleton* getInstance() {
         if (_pInstance == nullptr) {
@@ -14,6 +27,14 @@ class Singleton {
     void init(int x, int y) {
         _ix = x;
         _iy = y;
+    }
+
+    static void destroy() {
+        if (_pInstance) {
+            delete _pInstance;
+            _pInstance = nullptr;
+            cout << ">> delete heap" << endl;
+        }
     }
 
     void print() const {
@@ -28,37 +49,18 @@ class Singleton {
     }
     ~Singleton() { cout << "~Singleton()" << endl; }
 
-    friend class AutoRelease;
-
    private:
     int _ix;
     int _iy;
     static Singleton* _pInstance;
+    static AutoRelease _ar;
 };
 
 // 饱汉式
 Singleton* Singleton::_pInstance = nullptr;
-
-class AutoRelease {
-   public:
-    AutoRelease(Singleton* p) : _p(p) {
-        cout << "AutoRelease(Singleton*)" << endl;
-    }
-
-    ~AutoRelease() {
-        cout << "~AutoRelease()" << endl;
-        if (_p) {
-            delete _p;
-            _p = nullptr;
-        }
-    }
-
-   private:
-    Singleton* _p;
-};
+Singleton::AutoRelease Singleton::_ar;
 
 void test0() {
-    AutoRelease ar(Singleton::getInstance());
     Singleton::getInstance()->init(7, 8);
     Singleton::getInstance()->print();
 }

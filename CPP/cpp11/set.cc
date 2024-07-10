@@ -17,8 +17,10 @@ void test0() {
 
     cout << endl;
 
-    cout << nums2.count(3) << endl;
+    // cout << nums2.count(3) << endl;
 
+    size_t cnt = nums2.count(3);
+    cout << cnt << endl;
     set<int>::iterator it = nums2.find(50);
     // auto it = nums2.find(50);
     if (it != nums2.end()) {
