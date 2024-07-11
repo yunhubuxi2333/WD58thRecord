@@ -1,0 +1,23 @@
+1>class Derived	size(48):
+1>	+---
+
+
+1> 0	| +--- (base class Base2)
+1> 0	| | {vfptr}
+1> 8	| | _iBase2
+1>	| +---
+
+
+1>16	| +--- (base class Base3)
+1>16	| | {vfptr}
+1>24	| | _iBase3
+1>	| +---
+
+
+1>32	| +--- (base class Base1)
+1>32	| | _iBase1
+1>	| +---
+
+
+1>40	| _iDerived
+1>	+---
