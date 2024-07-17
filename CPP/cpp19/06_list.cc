@@ -3,23 +3,28 @@
 using std::cout;
 using std::endl;
 using std::list;
+template <typename Container>
+void display(const Container& con) {
+    for (auto& elem : con) {
+        cout << elem << "  ";
+    }
+    cout << endl;
+}
 
-void display() {}
+struct CompareList {
+    bool operator()(const int& lhs, const int& rhs) const {
+        cout << "struct CompareList" << endl;
+        return lhs < rhs;
+    }
+};
+
 void test() {
-    list<int> number = {11, 3, 5, 7, 9, 8, 6};
+    list<int> number = {1, 3, 5, 7, 5, 5, 3, 5, 3, 8};
     display(number);
-    list<int> other = {11, 44, 77, 99, 33, 22};
-    auto it = number.begin();
 
-    ++it;
-    ++it;
-    cout << "it = " << *it << endl;
-    // number.splice(it, other);
-    // display(number);
-    // display(other);
-
-    
-
+    cout << endl << "list的unique函数" << endl;
+    number.unique();
+    display(number);
 }
 int main(int argc, char argv[]) {
     test();
