@@ -57,3 +57,7 @@ dkms.conf
 *.log
 .vscode/
 main
+
+#忽略无后缀名文件
+/*
+!/*.*
