@@ -25,6 +25,7 @@ class Example {
         return x + y;
     }
 };
+
 void test0() {
     auto f = bind(add, 1, 2);
     cout << "f() = " << f() << endl;
@@ -37,6 +38,12 @@ void test0() {
     Example ex;
     auto f3 = bind(&Example::add, &ex, 10, 20);
     cout << "f3() = " << f3() << endl;
+
+    cout << endl;
+    // 占位符
+    using namespace std::placeholders;
+    auto f4 = bind(add, _2, 1001);
+    cout << "f4(999) = " << f4(999, 777) << endl;
 }
 
 int main() {
