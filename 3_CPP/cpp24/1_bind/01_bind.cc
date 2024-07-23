@@ -31,7 +31,7 @@ void test0() {
     cout << "f() = " << f() << endl;
 
     cout << endl;
-    auto f2 = bind(multiply, 3, 4, 5);
+    auto f2 = bind(&multiply, 3, 4, 5);
     cout << "f2() = " << f2() << endl;
 
     cout << endl;
