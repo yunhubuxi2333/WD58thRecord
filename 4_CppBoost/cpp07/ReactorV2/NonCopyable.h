@@ -1,7 +1,7 @@
 #ifndef __NONCOPYABLE_H__
 #define __NONCOPYABLE_H__
 
-// 不允许复制或者赋值
+// 不允许复制或赋值
 class NonCopyable {
    protected:
     NonCopyable() {}
