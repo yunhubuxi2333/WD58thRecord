@@ -7,7 +7,7 @@
 using std::cerr;
 using std::cout;
 // static 全局变量or函数 只在本文件里面生效
-static WFFacilities::WaitGroup waitGroup(2);
+static WFFacilities::WaitGroup waitGroup(1);
 // static 局部变量：这是静态变量
 // static 类成员 和类相关的成员
 
@@ -15,6 +15,7 @@ void sighandler(int signum) {
     cout << "done!\n";
     waitGroup.done();
 }
+
 void redisCallback(WFRedisTask* redisTask) {
     // 检查报错
     int state = redisTask->get_state();  // 获取状态
@@ -29,21 +30,25 @@ void redisCallback(WFRedisTask* redisTask) {
         case WFT_STATE_SUCCESS:  // 成功
             break;
     }
+
     // 先获取redis的结果
     protocol::RedisResponse* resp = redisTask->get_resp();
-    protocol::RedisValue
-        result;  // 默认构造一个result对象，将来可以存储redis指令的执行结果
+    // 默认构造一个result对象，将来可以存储redis指令的执行结果(值)
+    protocol::RedisValue result;
+
     resp->get_result(result);  //  获取指令执行的结果
     // 指令是否执行成功
     if (result.is_error()) {
         cerr << "Redis error\n";
         state = WFT_STATE_TASK_ERROR;
     }
+    
     if (state != WFT_STATE_SUCCESS) {
         cerr << "Failed. Press Ctrl-C to exit.\n";  // 状态不是成功时直接返回
         return;
     }
 }
+
 int main() {
     signal(SIGINT, sighandler);
     WFRedisTask* redisTask = WFTaskFactory::create_redis_task(

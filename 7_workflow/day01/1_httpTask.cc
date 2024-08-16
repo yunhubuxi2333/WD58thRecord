@@ -3,7 +3,7 @@
 #include <workflow/WFTaskFactory.h>
 
 #include <iostream>
-
+                
 using std::cout;
 
 static WFFacilities::WaitGroup waitGroup(1);
