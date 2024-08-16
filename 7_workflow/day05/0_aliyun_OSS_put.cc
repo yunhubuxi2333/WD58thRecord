@@ -8,8 +8,8 @@ using std::string;
 using namespace AlibabaCloud::OSS;
 
 struct OSSInfo {
-    string AccessKeyID = "LTAI5tQr5nUfy6E5zuSVAG6w";
-    string AccessKeySecret = "dJtH44eQ6FiEwtDrtYnhlcNbu78Vwe";
+    string AccessKeyID = "";
+    string AccessKeySecret = "";
     string EndPoint = "oss-cn-wuhan-lr.aliyuncs.com";
     string Bucket = "58huwentao-test";
 };
