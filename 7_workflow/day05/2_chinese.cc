@@ -7,7 +7,7 @@ int main() {
     for (int i = 0; i < str.size();) {
         // 1000 0000 & ch
         if ((str[i] & 0x80) == 0) {
-            cout << "这是一个英文" << str.substr(i, 1) << "\n";
+            cout << "英文: " << str.substr(i, 1) << "\n";
             ++i;
         } else {
             cout << "中文：" << str.substr(i, 3) << "\n";
